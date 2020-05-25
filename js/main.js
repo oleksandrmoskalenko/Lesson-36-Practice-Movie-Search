@@ -24,7 +24,33 @@ $(document).ready(function () {
     $(this).css('opacity', '100%')
   })
 
+  $(document).on('click', '.movie__img', function () {
+    openModal()
+  })
+
   //functions
+
+  function openModal() {
+    $('.modal-window').remove()
+    $('.movies').append(getReviews(movie.id))
+    $('.modal-window')
+      .css('position', 'fixed')
+      .css('z-index', '99')
+      .css('top', '50vh')
+      .css('left', '50%')
+      .css('width', '300px')
+      .css('height', '300px')
+      .css('background-color', '#000')
+    $(document).on('click', '.reviews__close', function () {
+      closeModal()
+    })
+  }
+
+  function closeModal() {
+    $('.modal-window').remove()
+  }
+
+
   function getMovie() {
     let query = $('.search__field').val()
 
@@ -35,7 +61,7 @@ $(document).ready(function () {
 
 
       $.ajax({
-        url: `${API_URL}/search/movie`,
+        url: `${API_URL} /search/movie`,
         type: 'GET',
         dataType: 'json',
         data: {
@@ -58,29 +84,39 @@ $(document).ready(function () {
   }
 
   function drawMovie(movie) {
-    let movieDOM = `<div class="movie">
-                      <img class="movie__roll" src="../images/roll.png" alt="roll">
-                      <img class="movie__img" src="${IMG_URL + movie.poster_path}" alt="movie-img">
-                      <div class="movie__review"
+    let movieDOM = `< div class="movie" >
+    <img class="movie__roll" src="../images/roll.png" alt="roll">
+      <img class="movie__img" src="${IMG_URL + movie.poster_path}" alt="movie-img">
+        <div class="movie__review"
                       <h2 class="movie__title">${movie.title}</h2>
-                      <div class="movie__info">
-                        <h3><b>Release date: </b>${movie.release_date}</h3>
-                        <h3><b>Rating: </b>${movie.vote_average}</h3>
-                        <p class="movie__synopsis">${movie.overview}...</p>
+      <div class="movie__info">
+        <h3><b>Release date: </b>${movie.release_date}</h3>
+        <h3><b>Rating: </b>${movie.vote_average}</h3>
+        <p class="movie__synopsis">${movie.overview}...</p>
+      </div>
                       </div>
-                      </div>
-                    </div>`
+                    </ > `
     return movieDOM
   }
 
   function getReviews(id) {
     $.ajax({
-      url: `${API_URL}/movie/${id}`,
+      url: `${API_URL} /movie/${id} `,
       type: 'GET',
       dataType: 'json',
       data: {
         api_key: API_KEY
       }
+    }).then((res) => {
+      if (res.results.length === 0)
+        alert('No reviews found')
+      else {
+        res.results.forEach((movie) => {
+          if (movie.poster_path != null)
+            $('.modal-window').append(drawMovie(movie))
+        })
+      }
+      $('body').removeClass('loading')
     })
   }
 })
