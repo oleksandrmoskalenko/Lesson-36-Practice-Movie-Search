@@ -16,6 +16,14 @@ $(document).ready(function () {
       getMovie()
   })
 
+  $(document).on('mouseover', '.movie__img', function () {
+    $(this).css('opacity', '0%')
+  })
+
+  $(document).on('mouseout', '.movie__img', function () {
+    $(this).css('opacity', '100%')
+  })
+
   //functions
   function getMovie() {
     let query = $('.search__field').val()
@@ -40,7 +48,7 @@ $(document).ready(function () {
         else {
           res.results.forEach((movie) => {
             if (movie.poster_path != null)
-              $('body').append(drawMovie(movie))
+              $('.movies').append(drawMovie(movie))
           })
         }
         $('body').removeClass('loading')
@@ -51,12 +59,15 @@ $(document).ready(function () {
 
   function drawMovie(movie) {
     let movieDOM = `<div class="movie">
-                      <img src="${IMG_URL + movie.poster_path}" alt="">
+                      <img class="movie__roll" src="../images/roll.png" alt="roll">
+                      <img class="movie__img" src="${IMG_URL + movie.poster_path}" alt="movie-img">
+                      <div class="movie__review"
                       <h2 class="movie__title">${movie.title}</h2>
                       <div class="movie__info">
-                        <h3><b>Release Date</b>${movie.release_date}</h3>
+                        <h3><b>Release date: </b>${movie.release_date}</h3>
                         <h3><b>Rating: </b>${movie.vote_average}</h3>
-                        <p>${movie.overview}</p>
+                        <p class="movie__synopsis">${movie.overview}...</p>
+                      </div>
                       </div>
                     </div>`
     return movieDOM
