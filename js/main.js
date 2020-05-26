@@ -18,10 +18,12 @@ $(document).ready(function () {
 
   $(document).on('mouseover', '.movie__img', function () {
     $(this).css('opacity', '0%')
+      .parent().find('.movie__title--front').css('z-index', '-2')
   })
 
   $(document).on('mouseout', '.movie__img', function () {
     $(this).css('opacity', '100%')
+    $('.movie__title--front').css('z-index', '1')
   })
 
   $(document).on('click', '.movie__img', function () {
