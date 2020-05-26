@@ -1,7 +1,7 @@
 'use strict'
 
-const API_KEY = '29bb47b7552ec502eb87cebfbc77f766';
-const API_URL = 'https://api.themoviedb.org/3';
+const API_KEY = '4518bf88af653a219ed6bca3f18e5fca';
+const API_URL = 'https://api.themoviedb.org/3/movie/550?api_key=4518bf88af653a219ed6bca3f18e5fca';
 const IMG_URL = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2';
 
 $(document).ready(function () {
