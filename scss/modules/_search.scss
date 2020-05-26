@@ -1,0 +1,15 @@
+.search {
+  margin: 30px 0 0 70%;
+
+  &__field {
+    border-bottom: 2px solid black;
+    padding-bottom: 4px;
+    background: transparent;
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

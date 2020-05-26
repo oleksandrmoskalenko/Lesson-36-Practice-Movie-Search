@@ -1,0 +1,47 @@
+.window {
+  position: fixed;
+  top: 25vh;
+  left: calc(30% + 60px);
+  display: flex;
+  padding: 20px;
+  width: 40%;
+  height: 50vh;
+  background: #fff;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &__close {
+    position: fixed;
+    top: 25vh;
+    right: calc(30% - 55px);
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: 400;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.reviews {
+  & .movie__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  &__text {
+    font-size: 16px;
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+}
