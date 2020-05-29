@@ -8,6 +8,7 @@
   height: 50vh;
   background: #fff;
   overflow-y: scroll;
+  z-index: 999;
   &::-webkit-scrollbar {
     width: 10px;
   }

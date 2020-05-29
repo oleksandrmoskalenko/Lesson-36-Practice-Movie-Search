@@ -120,9 +120,10 @@ body {
   padding: 10px 10px 30px;
   font-size: 13px;
   font-weight: 700;
+  overflow: hidden;
 }
 .movie__roll {
-  width: inherit;
+  width: 205px;
   position: absolute;
   top: -87px;
   left: -10px;
@@ -155,6 +156,7 @@ body {
   width: 185px;
   padding: 5px 15px 0 10px;
   line-height: 1.1;
+  overflow: hidden;
 }
 
 .search {
@@ -192,6 +194,7 @@ body {
   height: 50vh;
   background: #fff;
   overflow-y: scroll;
+  z-index: 999;
 }
 .window::-webkit-scrollbar {
   width: 10px;
